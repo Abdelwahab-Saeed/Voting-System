@@ -50,4 +50,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function votesReceived()
+    {
+        return $this->hasMany(UserVote::class, 'target_user_id');
+    }
+
+    public function votesGiven()
+    {
+        return $this->hasMany(UserVote::class, 'voter_id');
+    }
 }

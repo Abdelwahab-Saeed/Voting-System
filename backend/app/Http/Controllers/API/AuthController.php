@@ -51,9 +51,13 @@ class AuthController extends Controller
             ], 401);
         }
 
-        if($user->status !== UserStatus::APPROVED->value) {
+        if($user->status == UserStatus::PENDING->value) {
             return response()->json([
                 'message' => 'Your account is pending admin approval. You cannot vote or receive votes until your account is approved.'
+            ], 403);
+        } else if($user->status == UserStatus::REJECTED->value) {
+            return response()->json([
+                'message' => 'Your account has been rejected by the admin. You cannot vote or receive votes.'
             ], 403);
         }
 

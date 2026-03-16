@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -13,7 +14,7 @@ class UserController extends Controller
 
     public function getAllUsers() {
 
-        $users = User::paginate(10);
+        $users = User::where('role', UserRole::CANDIDATE->value)->paginate(10);
 
         return view('admin.users.index', compact('users'));
     }

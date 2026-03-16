@@ -19,13 +19,6 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
-    public function show($id) {
-
-        $user = User::findOrFail($id);
-
-        return view('admin.users.show', compact('user'));
-    }
-
     public function getPendingUsers() {
 
         $users = User::where('status', UserStatus::PENDING->value)->paginate(10);

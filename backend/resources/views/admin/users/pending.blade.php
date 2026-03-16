@@ -77,7 +77,7 @@
         <div > Are you sure you want to approve this user? </div>
         <x-slot name="footerSlot">
             <form id="approveForm" action="#" method="POST">
-                @csrf
+                @csrf @method('PATCH')
                 <x-adminlte-button label="Approve" theme="success" type="submit" class="mr-2"/>
             </form>
             <x-adminlte-button theme="danger" label="Dismiss" data-dismiss="modal"/>
@@ -89,7 +89,7 @@
         <div > Are you sure you want to reject this user? </div>
         <x-slot name="footerSlot">
             <form id="rejectForm" action="#" method="POST">
-                @csrf
+                @csrf @method('PATCH')
                 <x-adminlte-button label="Reject" theme="warning" type="submit" class="mr-2"/>
             </form>
             <x-adminlte-button theme="danger" label="Dismiss" data-dismiss="modal"/>
